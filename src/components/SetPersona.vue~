@@ -1,0 +1,83 @@
+<script>
+import { usePersonaStore } from '../stores/persona';
+export default {
+  components: {
+	  usePersonaStore
+  },
+  store() {
+	const persona = usePersonaStore();
+	return { persona };
+    persona.refreshPersona();
+  },
+	props: {
+    msg: {
+      type: String,
+      required: true
+    }
+  },
+  data() {
+    return {
+      firstName: 'John',
+      lastName: 'Doe',
+      gender: 'male',
+      email: 'john@gmail.com',
+      picture: 'https://randomuser.me/portraits/men/1.jpg',
+      description: 'desc'
+    }
+  },
+  methods: {
+    async getUser() {
+      const res = await fetch('https://randomuser.me/api');
+      const { results } = await res.json();
+      const desc = await fetch(`http://localhost:9999/para?name=${results[0].name.first}`);
+      const email = await fetch(`http://localhost:9999/getmailaddress?name=${results[0].name.first}`);
+      console.log(results);
+      this.firstName = results[0].name.first;
+      this.lastName = results[0].name.last;
+      this.gender = results[0].gender;
+      this.email = await email.text();
+      this.description = await desc.text();
+      this.picture = results[0].picture.large;
+    },
+  }
+}
+</script>
+
+<template>
+  <div id="app">
+    <div class="details">
+      <button :class="gender" @click="getUser">Get Random User</button>
+      <h2>Name: {{ firstName }} {{ lastName }}</h2>
+      <h2>
+        Email:
+        <a :href="`mailto:${email}`">{{ email }}</a>
+      </h2>
+      <p>{{ description }}</p>
+    </div>
+   
+  </div>
+</template>
+
+<style scoped>
+h1 {
+    font-weight: 500;
+    font-size: 2.6rem;
+    top: -10px;
+}
+
+h3 {
+    font-size: 1.2rem;
+}
+
+.greetings h1,
+.greetings h3 {
+    text-align: center;
+}
+
+@media (min-width: 1024px) {
+    .greetings h1,
+    .greetings h3 {
+        text-align: left;
+    }
+}
+</style>
