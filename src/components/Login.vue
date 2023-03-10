@@ -2,7 +2,7 @@
 <div class="bg flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
   <div class="w-full max-w-md space-y-8">
     <div>
-      <img class="mx-auto h-12 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="Your Company">
+      <img class="mx-auto h-12 w-auto" src="https://imgs.search.brave.com/TgiGNLM-GJM4gQzBKmNLDMsPMRLUYOpwqP09pO1bVtU/rs:fit:1024:788:1/g:ce/aHR0cHM6Ly93d3cu/b25seWdmeC5jb20v/d3AtY29udGVudC91/cGxvYWRzLzIwMTcv/MTIvZmFrZS1zdGFt/cC0zLTEwMjR4Nzg4/LnBuZw" alt="Your Company">
       <h2 class="mt-6 text-center text-3xl font-bold tracking-tight text-white-900">Login</h2>
       <p class="mt-2 text-center text-sm text-gray-600">
         
